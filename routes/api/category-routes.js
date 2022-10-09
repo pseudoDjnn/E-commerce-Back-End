@@ -9,13 +9,13 @@ router.get("/", (req, res) => {
   Category.findAll({
     include: {
       model: Product,
-      attributes: ["id", "product_name", "price", "stock", "category_id"],
+      // attributes: ["id", "product_name", "price", "stock", "category_id"],
     },
   })
-    .then((dbCategoryData) => res.json(dbCategoryData))
+    .then((dbCategoryData) => res.status(200).json(dbCategoryData))
     .catch((err) => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(400).json(err);
     });
 });
 
@@ -28,7 +28,7 @@ router.get("/:id", (req, res) => {
     },
     include: {
       model: Product,
-      attributes: ["id", "product_name", "price", "stock", "category_id"],
+      // attributes: ["id", "product_name", "price", "stock", "category_id"],
     },
   })
     .then((dbCategoryData) => {
