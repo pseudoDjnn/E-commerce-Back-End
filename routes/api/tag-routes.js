@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Tag, Product, ProductTag } = require("../../models");
+const { Tag, Product, ProductTag, Category } = require("../../models");
 
 // The `/api/tags` endpoint
 
@@ -56,6 +56,22 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   // update a tag's name by its `id` value
+  Category.update(req.body, {
+    individualHooks: true,
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbCategoryInput) => {
+      if (!dbCategoryInput) {
+        res.status(404).json({ message: "No Category found" });
+      }
+      res.json(dbCategoryInput);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.delete("/:id", (req, res) => {
