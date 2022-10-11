@@ -9,7 +9,6 @@ router.get("/", (req, res) => {
   Category.findAll({
     include: {
       model: Product,
-      // attributes: ["id", "product_name", "price", "stock", "category_id"],
     },
   })
     .then((dbCategoryData) => res.status(200).json(dbCategoryData))
@@ -23,12 +22,13 @@ router.get("/:id", (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   Category.findOne({
+    include: [
+      {
+        model: Product,
+      },
+    ],
     where: {
       id: req.params.id,
-    },
-    include: {
-      model: Product,
-      // attributes: ["id", "product_name", "price", "stock", "category_id"],
     },
   })
     .then((dbCategoryData) => {

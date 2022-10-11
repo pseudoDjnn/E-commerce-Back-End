@@ -11,15 +11,20 @@ router.get("/", (req, res) => {
     include: [
       {
         model: Category,
-        // attributes: ["id", "category_name"],
       },
-      // {
-      //   model: Tag,
-      //   through: ProductTag,
-      // },
+      {
+        model: Tag,
+        through: ProductTag,
+      },
     ],
   })
-    .then((dbProductsData) => res.json(dbProductsData))
+    .then((dbProductsData) => {
+      if (!dbProductsData) {
+        res.status(404).json({ message: "Product not found with this id" });
+        return;
+      }
+      res.json(dbProductsData);
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -35,10 +40,10 @@ router.get("/:id", (req, res) => {
       {
         model: Category,
       },
-      // {
-      //   model: Tag,
-      //   through: ProductTag,
-      // },
+      {
+        model: Tag,
+        through: ProductTag,
+      },
     ],
     where: {
       id: req.params.id,
@@ -71,7 +76,7 @@ router.post("/", (req, res) => {
             model: Tag,
             throught: ProductTag,
             where: {
-              tasg_id: req.body.tag_id,
+              tag_id: req.body.tag_id,
             },
           },
         ],
