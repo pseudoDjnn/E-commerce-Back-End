@@ -56,7 +56,7 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   // update a tag's name by its `id` value
-  Tag.update(res.body, {
+  Tag.update(req.body, {
     individualHooks: true,
     where: {
       id: req.params.id,
@@ -66,6 +66,7 @@ router.put("/:id", (req, res) => {
       if (!dbTagInput) {
         res.status(404).json({ message: "Invalid Tag id" });
       }
+      res.json(dbTagInput);
     })
     .catch((err) => {
       console.log(err);
