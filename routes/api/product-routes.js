@@ -68,13 +68,13 @@ router.post("/", (req, res) => {
     product_name: req.body.product_name,
     price: req.body.price,
     stock: req.body.stock,
-    categorry_id: req.body.category_id,
+    category_id: req.body.category_id,
     tagIds: [
       {
         include: [
           {
             model: Tag,
-            throught: ProductTag,
+            through: ProductTag,
             where: {
               tag_id: req.body.tag_id,
             },
