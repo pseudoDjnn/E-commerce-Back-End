@@ -56,17 +56,16 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   // update a tag's name by its `id` value
-  Category.update(req.body, {
+  Tag.update(res.body, {
     individualHooks: true,
     where: {
       id: req.params.id,
     },
   })
-    .then((dbCategoryInput) => {
-      if (!dbCategoryInput) {
-        res.status(404).json({ message: "No Category found" });
+    .then((dbTagInput) => {
+      if (!dbTagInput) {
+        res.status(404).json({ message: "Invalid Tag id" });
       }
-      res.json(dbCategoryInput);
     })
     .catch((err) => {
       console.log(err);
