@@ -31,6 +31,8 @@ A CRUD e-commerce template backend that allows a basic nesting of objects create
   npm start
   ```
 
+  - [Video](https://drive.google.com/file/d/1aG0QhJC0ZCmFX4tGO-SvkDS4_BJAnHWi/view)
+
   # Test
 
   No
