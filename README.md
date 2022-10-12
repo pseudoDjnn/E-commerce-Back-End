@@ -32,6 +32,8 @@ A CRUD e-commerce template backend that allows a basic nesting of objects create
   ```
 
   - [Video](https://drive.google.com/file/d/1aG0QhJC0ZCmFX4tGO-SvkDS4_BJAnHWi/view)
+  
+  ![e-commerce](https://user-images.githubusercontent.com/105378214/195399763-368dc69c-5a4c-400d-9cc3-11850abe189d.png)
 
   # Test
 
