@@ -20,7 +20,7 @@ A CRUD e-commerce template backend that allows a basic nesting of objects create
   To install dependencies, run:
 
   ```
-  dotenv, express, mysql2, sequelize
+  npm i
   ```
 
   ## Usage
